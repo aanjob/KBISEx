@@ -909,6 +909,11 @@ Public Class FBPB
                         .Close()
                     End With
 
+                    MsgBox(Stok1)
+                    MsgBox(Stok2)
+                    MsgBox(Stok3)
+                    MsgBox(StokTemp)
+
                     If Stok2 > Stok3 Then
                         StokTemp = Stok3
                     Else

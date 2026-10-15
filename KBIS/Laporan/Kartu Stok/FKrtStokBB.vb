@@ -61,7 +61,7 @@ Public Class FKrtStokBB
         Dim cmsl As SqlDataAdapter
 
         If Me.CEBtNum.EditValue = True Then
-            cmsl = New SqlDataAdapter("Select Distinct convert(bit,'FALSE') as Cek,'" & InisialBC & "'+B.BBID as BBIDBC,B.BBID,BtNum,Nama As Bahan,Sat From M_BB B Inner Join T_StokBB S On B.BBID=S.BBID", koneksi)
+            cmsl = New SqlDataAdapter("Select Distinct convert(bit,'FALSE') as Cek,'" & InisialBC & "'+B.BBID as BBIDBC,B.BBID,BtNum,Nama As Bahan,Sat From M_BB B Inner Join T_StokBB S On B.BBID=S.BBID where B.Aktif=1", koneksi)
             cmsl.TableMappings.Add("Table", "M_BBBtBum")
             cmsl.SelectCommand.CommandTimeout = 90000
             cmsl.Fill(DsLapF, "M_BBBtBum")
@@ -71,7 +71,7 @@ Public Class FKrtStokBB
             Me.GridControl2.DataSource = DsLapF
             Me.GridControl2.DataMember = "M_BBBtBum"
         Else
-            cmsl = New SqlDataAdapter("Select convert(bit,'FALSE') as Cek,'" & InisialBC & "'+BBID as BBIDBC,BBID,Nama As Bahan,Sat From M_BB", koneksi)
+            cmsl = New SqlDataAdapter("Select convert(bit,'FALSE') as Cek,'" & InisialBC & "'+BBID as BBIDBC,BBID,Nama As Bahan,Sat From M_BB where Aktif=1", koneksi)
             cmsl.TableMappings.Add("Table", "M_BB")
             cmsl.SelectCommand.CommandTimeout = 90000
             cmsl.Fill(DsLapF, "M_BB")
